@@ -45,10 +45,13 @@ mcp dev flowchart.py   # For flowchart-gen
 mcp dev weather.py        # For weather-example
 ```
 
-You may need to adjust the command and argument fields as needed.
+You may need to adjust the command and argument fields as needed when you connect to the server - currently works with the setup depicted below:
+
+![MCP inspector photo](./photos/inspector_demo.png)
 
 ### 5. Configure Gemini CLI
 Update your `~/.gemini/settings.json` to point to your local server as described in the [MCP Quickstart](https://modelcontextprotocol.io/quickstart/server).
 
+If gemini makes a flowchart, it will return a whole lot of nonsense, but the image will appear in `flowchart-gen` For example:
 
-
+![Flowchart Example](./flowchart-gen/flowchart.png)
