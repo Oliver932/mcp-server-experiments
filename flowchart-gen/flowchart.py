@@ -16,7 +16,7 @@ import os
 import shutil
 from mcp.server.fastmcp import FastMCP
 from graphviz import Source
-from typing import Any
+from typing import Any, Dict
 
 mcp = FastMCP("graphviz_flowchart_server", "0.0.1")
 
@@ -31,10 +31,10 @@ def generate_graph_image(dot_string: str) -> bytes:
         return image_file.read()
 
 @mcp.tool()
-async def create_flowchart(dot_string: str) -> str:
+async def create_flowchart(dot_string: str) -> Dict[str, str]:
     """
-    Creates a flowchart from a DOT language string and returns it as a
-    base64 encoded PNG image.
+    Creates a flowchart from a DOT language string and returns it as an
+    MCP image content block.
 
     Args:
         dot_string: A string containing the flowchart definition in the
@@ -46,13 +46,21 @@ async def create_flowchart(dot_string: str) -> str:
         image_bytes = generate_graph_image(dot_string)
         # Encode the image bytes as a base64 string.
         base64_image = base64.b64encode(image_bytes).decode("utf-8")
-        # Return the base64 encoded image string as a data URI.
-        return f"data:image/png;base64,{base64_image}"
+        # Return the image as an MCP image content block.
+        return {
+            "type": "image",
+            "data": base64_image,
+            "mimeType": "image/png"
+        }
     except Exception as e:
         # If there's an error during graph generation, return a
         # user-friendly error message.
         print(f"An error occurred: {e}")
-        return "Error: Could not generate the flowchart. Please check if Graphviz is installed and that the DOT string is valid."
+        return {
+            "type": "text",
+            "text": "Error: Could not generate the flowchart. Please check if Graphviz is installed and that the DOT string is valid."
+        }
+
 
 @mcp.resource("info://server")
 def server_info() -> str:
