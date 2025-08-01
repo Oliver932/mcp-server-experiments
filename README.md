@@ -3,7 +3,7 @@
 
 This repository contains two example projects:
 
-- **flowchart-gen**: Generates Graphviz flowcharts from input data in the DOT format, they are saved into the flowchart-gen file
+- **flowchart-gen**: Generates Graphviz flowcharts from input data in the DOT format.
 - **weather-example**: Demonstrates a simple weather server using the Model Context Protocol (MCP).
 
 ## Setup Instructions
@@ -39,19 +39,19 @@ pip install "mcp[cli]"
 ```
 
 ### 4. Run the Development Server
-Replace `server.py` with the main script for your project (e.g., `flowchart.py` or `weather.py`):
+
 ```bash
 mcp dev flowchart.py   # For flowchart-gen
 mcp dev weather.py        # For weather-example
 ```
 
-You may need to adjust the command and argument fields as needed when you connect to the server - currently works with the setup depicted below:
+You may need to adjust the **command** and **argument** fields before connecting to the server - It works with the setup depicted below:
 
 ![MCP inspector photo](./photos/inspector_demo.png)
 
 ### 5. Configure Gemini CLI
 Update your `~/.gemini/settings.json` to point to your local server as described in the [MCP Quickstart](https://modelcontextprotocol.io/quickstart/server).
 
-If gemini makes a flowchart, it will return a whole lot of nonsense, but the image will appear in `flowchart-gen` For example:
+If gemini makes a flowchart the image will appear in `\flowchart-gen` as `flowchart.png`:
 
 ![Flowchart Example](./flowchart-gen/flowchart.png)
