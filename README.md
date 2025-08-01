@@ -39,10 +39,10 @@ pip install "mcp[cli]"
 ```
 
 ### 4. Run the Development Server
-Replace `server.py` with the main script for your project (e.g., `flowchart.py` or `main.py`):
+Replace `server.py` with the main script for your project (e.g., `flowchart.py` or `weather.py`):
 ```bash
 mcp dev flowchart.py   # For flowchart-gen
-mcp dev main.py        # For weather-example
+mcp dev weather.py        # For weather-example
 ```
 
 You may need to adjust the command and argument fields as needed.
